@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Percetakan Serasi</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <header class="header">
+    <h1>Percetakan Serasi</h1>
+    <p>Yasin • Tahlil • Undangan</p>
+  </header>
+
+  <section class="gallery">
+    <h2>Pilih Desain</h2>
+
+    <div class="grid">
+
+      <div class="card" onclick="selectDesign('yasin1.jpg')">
+        <img src="images/yasin1.jpg" />
+        <p>Yasin 1</p>
+      </div>
+
+      <div class="card" onclick="selectDesign('yasin2.jpg')">
+        <img src="images/yasin2.jpg" />
+        <p>Yasin 2</p>
+      </div>
+
+      <div class="card" onclick="selectDesign('tahlil1.jpg')">
+        <img src="images/tahlil1.jpg" />
+        <p>Tahlil 1</p>
+      </div>
+
+      <div class="card" onclick="selectDesign('undangan1.jpg')">
+        <img src="images/undangan1.jpg" />
+        <p>Undangan 1</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="form-section">
+
+    <h2>Form Pemesanan</h2>
+
+    <input id="nama" placeholder="Nama" required />
+    <input id="wa" placeholder="Nomor WhatsApp" required />
+    <input id="jumlah" type="number" placeholder="Jumlah" required />
+    <textarea id="pertanyaan" placeholder="Pertanyaan"></textarea>
+    <textarea id="alamat" placeholder="Keterangan rumah (opsional)"></textarea>
+
+    <button onclick="getLocation()">Ambil Lokasi GPS</button>
+
+    <p id="gpsStatus">GPS belum diambil</p>
+
+    <button class="btn" onclick="sendWA()">Kirim ke WhatsApp</button>
+
+  </section>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
