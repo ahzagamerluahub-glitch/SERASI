@@ -1,196 +1,63 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Percetakan Serasi</title>
-  <link rel="stylesheet" href="style.css"/>
+<meta charset="UTF-8">
+<title>Percetakan Serasi</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="header">
-    <h1>Percetakan Serasi</h1>
-    <p>Yasin • Tahlil • Undangan</p>
-  </header>
+<h1>Percetakan Serasi</h1>
 
-  <section class="gallery">
-    <h2>Pilih Desain</h2>
+<div class="grid">
 
-    <div class="grid">
+  <img src="1.jpg" onclick="selectImg('1.jpg')">
+  <img src="2.jpg" onclick="selectImg('2.jpg')">
+  <img src="3.jpg" onclick="selectImg('3.jpg')">
+  <img src="4.jpg" onclick="selectImg('4.jpg')">
+  <img src="5.jpg" onclick="selectImg('5.jpg')">
+  <img src="6.jpg" onclick="selectImg('6.jpg')">
+  <img src="7.jpg" onclick="selectImg('7.jpg')">
+  <img src="8.jpg" onclick="selectImg('8.jpg')">
+  <img src="9.jpg" onclick="selectImg('9.jpg')">
+  <img src="10.jpg" onclick="selectImg('10.jpg')">
+  <img src="11.jpg" onclick="selectImg('11.jpg')">
+  <img src="12.jpg" onclick="selectImg('12.jpg')">
+  <img src="13.jpg" onclick="selectImg('13.jpg')">
+  <img src="14.jpg" onclick="selectImg('14.jpg')">
+  <img src="15.jpg" onclick="selectImg('15.jpg')">
+  <img src="16.jpg" onclick="selectImg('16.jpg')">
+  <img src="17.jpg" onclick="selectImg('17.jpg')">
+  <img src="18.jpg" onclick="selectImg('18.jpg')">
+  <img src="19.jpg" onclick="selectImg('19.jpg')">
+  <img src="20.jpg" onclick="selectImg('20.jpg')">
+  <img src="21.jpg" onclick="selectImg('21.jpg')">
+  <img src="22.jpg" onclick="selectImg('22.jpg')">
+  <img src="23.jpg" onclick="selectImg('23.jpg')">
+  <img src="24.jpg" onclick="selectImg('24.jpg')">
+  <img src="25.jpg" onclick="selectImg('25.jpg')">
+  <img src="26.jpg" onclick="selectImg('26.jpg')">
+  <img src="27.jpg" onclick="selectImg('27.jpg')">
+  <img src="28.jpg" onclick="selectImg('28.jpg')">
 
-      <div class="card" onclick="selectDesign('yasin1.jpg')">
-        <img src="1.jpg" />
-        <p>Yasin 1</p>
-      </div>
+</div>
 
-      <div class="card" onclick="selectDesign('yasin2.jpg')">
-        <img src="2.jpg" />
-        <p>Yasin 2</p>
-      </div>
+<hr>
 
-      <div class="card" onclick="selectDesign('tahlil1.jpg')">
-        <img src="tahlil1.jpg" />
-        <p>Tahlil 1</p>
-      </div>
+<h2>Form Pesanan</h2>
 
-      <div class="card" onclick="selectDesign('undangan1.jpg')">
-        <img src="undangan1.jpg" />
-        <p>Undangan 1</p>
-      </div>
+<input id="nama" placeholder="Nama">
+<input id="wa" placeholder="WhatsApp">
+<input id="jumlah" type="number" placeholder="Jumlah">
+<textarea id="pesan" placeholder="Pertanyaan"></textarea>
 
-      <div class="card" onclick="selectDesign('yasin3.jpg')">
-        <img src="3.jpg" />
-        <p>Yasin 3</p>
-      </div>
+<button onclick="getGPS()">Ambil GPS</button>
+<p id="gpsText">GPS belum aktif</p>
 
-      <div class="card" onclick="selectDesign('yasin4.jpg')">
-        <img src="4.jpg" />
-        <p>Yasin 4</p>
-      </div>
+<button onclick="sendWA()">Kirim ke WhatsApp</button>
 
-      <div class="card" onclick="selectDesign('yasin5.jpg')">
-        <img src="5.jpg" />
-        <p>Yasin 5</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin6.jpg')">
-        <img src="6.jpg" />
-        <p>Yasin 6</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin7.jpg')">
-        <img src="7.jpg" />
-        <p>Yasin 7</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin8.jpg')">
-        <img src="8.jpg" />
-        <p>Yasin 8</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin9.jpg')">
-        <img src="9.jpg" />
-        <p>Yasin 9</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin10.jpg')">
-        <img src="10.jpg" />
-        <p>Yasin 10</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin11.jpg')">
-        <img src="11.jpg" />
-        <p>Yasin 11</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin12.jpg')">
-        <img src="12.jpg" />
-        <p>Yasin 12</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin13.jpg')">
-        <img src="13.jpg" />
-        <p>Yasin 13</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin14.jpg')">
-        <img src="14.jpg" />
-        <p>Yasin 14</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin15.jpg')">
-        <img src="15.jpg" />
-        <p>Yasin 15</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin16.jpg')">
-        <img src="16.jpg" />
-        <p>Yasin 16</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin17.jpg')">
-        <img src="17.jpg" />
-        <p>Yasin 17</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin18.jpg')">
-        <img src="18.jpg" />
-        <p>Yasin 18</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin19.jpg')">
-        <img src="19.jpg" />
-        <p>Yasin 19</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin20.jpg')">
-        <img src="20.jpg" />
-        <p>Yasin 20</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin21.jpg')">
-        <img src="21.jpg" />
-        <p>Yasin 21</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin22.jpg')">
-        <img src="22.jpg" />
-        <p>Yasin 22</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin23.jpg')">
-        <img src="23.jpg" />
-        <p>Yasin 23</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin24.jpg')">
-        <img src="24.jpg" />
-        <p>Yasin 24</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin25.jpg')">
-        <img src="25.jpg" />
-        <p>Yasin 25</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin26.jpg')">
-        <img src="26.jpg" />
-        <p>Yasin 26</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin27.jpg')">
-        <img src="27.jpg" />
-        <p>Yasin 27</p>
-      </div>
-
-      <div class="card" onclick="selectDesign('yasin28.jpg')">
-        <img src="28.jpg" />
-        <p>Yasin 28</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="form-section">
-
-    <h2>Form Pemesanan</h2>
-
-    <input id="nama" placeholder="Nama" required />
-    <input id="wa" placeholder="Nomor WhatsApp" required />
-    <input id="jumlah" type="number" placeholder="Jumlah" required />
-    <textarea id="pertanyaan" placeholder="Pertanyaan"></textarea>
-    <textarea id="alamat" placeholder="Keterangan rumah (opsional)"></textarea>
-
-    <button onclick="getLocation()">Ambil Lokasi GPS</button>
-
-    <p id="gpsStatus">GPS belum diambil</p>
-
-    <button class="btn" onclick="sendWA()">Kirim ke WhatsApp</button>
-
-  </section>
-
-  <script src="config.js"></script>
-  <script src="script.js"></script>
+<script src="config.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
