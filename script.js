@@ -1,3 +1,37 @@
+let selectedImg = null;
+let lat = 0;
+let lng = 0;
+
+let lastSend = 0;
+
+function canSend() {
+  const now = Date.now();
+  if (now - lastSend < 5000) return false;
+  lastSend = now;
+  return true;
+}
+
+// EMAILJS
+function kirimEmail(nama, wa, jumlah, img, gps, pesan, linkAdmin) {
+
+  emailjs.send(
+    "service_y6jn0ji",
+    "TEMPLATE_ID_KAMU",
+    {
+      to_email: "evosrezasyah@gmail.com",
+      nama: nama,
+      wa: wa,
+      jumlah: jumlah,
+      desain: img,
+      gps: gps,
+      pesan: pesan,
+      link_admin: linkAdmin
+    }
+  );
+
+}
+
+// PILIH GAMBAR
 function selectImg(img) {
   selectedImg = img;
   alert("Dipilih: " + img);
@@ -14,7 +48,7 @@ function getGPS() {
   });
 }
 
-// kirim WA + link admin
+// KIRIM WA + EMAIL
 function sendWA() {
 
   const nama = document.getElementById("nama").value;
@@ -32,11 +66,15 @@ function sendWA() {
     return;
   }
 
+  if (!canSend()) {
+    alert("Tunggu 5 detik sebelum kirim lagi");
+    return;
+  }
+
   const maps = `https://maps.google.com/?q=${lat},${lng}`;
 
-  // LINK ADMIN (ini inti sistem kamu)
-  const adminLink =
-`https://USERNAME.github.io/serasi/siap.html?nama=${encodeURIComponent(nama)}&wa=${encodeURIComponent(wa)}&jumlah=${encodeURIComponent(jumlah)}&img=${encodeURIComponent(selectedImg)}`;
+  const linkAdmin =
+`https://USERNAME.github.io/SERASI/siap.html?nama=${encodeURIComponent(nama)}&wa=${encodeURIComponent(wa)}&jumlah=${encodeURIComponent(jumlah)}&img=${encodeURIComponent(selectedImg)}`;
 
   const msg =
 `PESANAN BARU
@@ -49,11 +87,17 @@ Desain: ${selectedImg}
 
 GPS: ${maps}
 
+Pesan: ${pesan}
+
 Status: TANYA / BELUM FIX
 
 Link Admin:
-${adminLink}`;
+${linkAdmin}`;
 
+  // kirim email
+  kirimEmail(nama, wa, jumlah, selectedImg, maps, pesan, linkAdmin);
+
+  // kirim WA
   const url =
 `https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(msg)}`;
 
