@@ -1,49 +1,47 @@
-const params = new URLSearchParams(window.location.search);
+const p = new URLSearchParams(window.location.search);
 
-const nama = params.get("nama") || "Pelanggan";
-const wa = params.get("wa") || "";
+const nama = p.get("nama");
+const wa = p.get("wa");
 
 document.getElementById("info").innerText =
-`Halo ${nama}. Pilih metode pengiriman.`;
+`Halo ${nama}, pilih metode pengiriman`;
 
 function kirim(type) {
 
   let pesan = "";
 
   if (type === "antar") {
-    pesan = `Halo ${nama}.
+    pesan =
+`Halo ${nama}
 
-Pesanan Anda sudah selesai.
+Pesanan Anda sudah selesai
 
-Metode Pengiriman:
+Metode:
 Diantar Langsung
 
-Terima kasih telah memesan di Percetakan Serasi.`;
+Percetakan Serasi`;
   }
 
   if (type === "ambil") {
-    pesan = `Halo ${nama}.
+    pesan =
+`Halo ${nama}
 
-Pesanan Anda sudah selesai.
+Pesanan siap diambil
 
-Silakan ambil di Percetakan Serasi.
-
-Terima kasih.`;
+Percetakan Serasi`;
   }
 
   if (type === "ekspedisi") {
-    pesan = `Halo ${nama}.
+    pesan =
+`Halo ${nama}
 
-Pesanan Anda sudah selesai.
+Pesanan dikirim via ekspedisi
 
-Metode Pengiriman:
-Ekspedisi
-
-Terima kasih.`;
+Percetakan Serasi`;
   }
 
   window.open(
-    `https://wa.me/${CONFIG.ADMIN_WHATSAPP}?text=${encodeURIComponent(pesan)}`,
+    `https://wa.me/${wa}?text=${encodeURIComponent(pesan)}`,
     "_blank"
   );
 }
