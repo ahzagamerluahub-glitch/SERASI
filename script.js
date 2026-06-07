@@ -1,84 +1,61 @@
-function selectDesign(img) {
-  selectedImage = img;
-  alert("Desain dipilih: " + img);
+function selectImg(img) {
+  selectedImg = img;
+  alert("Dipilih: " + img);
 }
 
-// ambil GPS
-function getLocation() {
-  if (!navigator.geolocation) {
-    alert("GPS tidak didukung");
-    return;
-  }
+// GPS
+function getGPS() {
+  navigator.geolocation.getCurrentPosition((pos) => {
+    lat = pos.coords.latitude;
+    lng = pos.coords.longitude;
 
-  navigator.geolocation.getCurrentPosition(
-    (pos) => {
-      userLat = pos.coords.latitude;
-      userLng = pos.coords.longitude;
-
-      document.getElementById("gpsStatus").innerText =
-        "GPS aktif ✓";
-    },
-    () => {
-      alert("GPS harus diizinkan");
-    }
-  );
+    document.getElementById("gpsText").innerText =
+      "GPS aktif ✔";
+  });
 }
 
-// hitung harga sederhana
-function calcPrice(jumlah) {
-  if (jumlah >= 100) {
-    return 7500;
-  } else {
-    return 8000;
-  }
-}
-
-// kirim ke WhatsApp
+// kirim WA + link admin
 function sendWA() {
+
   const nama = document.getElementById("nama").value;
   const wa = document.getElementById("wa").value;
   const jumlah = document.getElementById("jumlah").value;
-  const pertanyaan = document.getElementById("pertanyaan").value;
-  const alamat = document.getElementById("alamat").value;
+  const pesan = document.getElementById("pesan").value;
 
   if (!nama || !wa || !jumlah) {
-    alert("Nama WA dan Jumlah wajib diisi");
+    alert("Isi data dulu");
     return;
   }
 
-  if (!userLat || !userLng) {
-    alert("GPS wajib diaktifkan");
+  if (!selectedImg) {
+    alert("Pilih foto dulu");
     return;
   }
 
-  const harga = calcPrice(jumlah);
-  const total = harga * jumlah;
+  const maps = `https://maps.google.com/?q=${lat},${lng}`;
 
-  const maps = `https://maps.google.com/?q=${userLat},${userLng}`;
+  // LINK ADMIN (ini inti sistem kamu)
+  const adminLink =
+`https://USERNAME.github.io/serasi/siap.html?nama=${encodeURIComponent(nama)}&wa=${encodeURIComponent(wa)}&jumlah=${encodeURIComponent(jumlah)}&img=${encodeURIComponent(selectedImg)}`;
 
   const msg =
-`Halo Percetakan Serasi.
+`PESANAN BARU
 
 Nama: ${nama}
 WA: ${wa}
-
 Jumlah: ${jumlah}
-Harga per buku: ${harga}
-Total: ${total}
 
-Desain: ${selectedImage}
+Desain: ${selectedImg}
 
-Pertanyaan:
-${pertanyaan}
+GPS: ${maps}
 
-Alamat:
-${alamat}
+Status: TANYA / BELUM FIX
 
-GPS:
-${maps}`;
+Link Admin:
+${adminLink}`;
 
   const url =
-`https://wa.me/${CONFIG.ADMIN_WHATSAPP}?text=${encodeURIComponent(msg)}`;
+`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(msg)}`;
 
   window.open(url, "_blank");
 }
