@@ -1,5 +1,12 @@
-const ADMIN_WA = "6285784597141";
+const CONFIG = {
+  STORE_NAME: "Percetakan Serasi",
+  ADMIN_WHATSAPP: "6285784597141",
+  ADMIN_EMAIL: "evosrezasyah@gmail.com",
 
-let selectedImg = "";
-let lat = "";
-let lng = "";
+  PRICING: {
+    yasin: {
+      under100: 8000,
+      over100: 7500
+    }
+  }
+};
